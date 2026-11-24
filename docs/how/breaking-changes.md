@@ -29,6 +29,20 @@ If someone sees an "Unauthorized" error when cleaning up these items, give them 
 
 Through the GraphQL API, a query can no longer be created unless it is attached to at least one dataset. The UI always attaches a query to a dataset, so it is not affected.
 
+### Graph edges during a zero-downtime rollback
+
+This only applies with entity and aspect tolerance on (`UNKNOWN_DATA_TOLERANCE_ENABLED` or
+`UNKNOWN_ENTITY_ASPECT_TOLERANCE_ENABLED`, off by default; see
+[#20280](https://github.com/datahub-project/datahub/pull/20280)). With it off nothing changes.
+
+Graph edges to entity types only the newer version knows now stay as the newer version wrote them,
+including when restore indices re-indexes the aspect. Before, a full re-index of an aspect deleted
+them. When the newer version's change removes such an element, the element's edges to known entity
+types are removed too; before, they stayed. A search document rewritten during the rollback window,
+by a change or by restore indices, still doesn't hold those references: after rolling forward, run
+restore indices for the entity types changed or restored during that window to put them back in
+search.
+
 ### Semantic search template sends an entity URN to similarity ([#21474](https://github.com/datahub-project/datahub/pull/21474))
 
 System update now writes version 19 of the shipped search templates. `urn:li:searchTemplate:semantic`
