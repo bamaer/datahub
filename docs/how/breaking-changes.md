@@ -29,7 +29,7 @@ If someone sees an "Unauthorized" error when cleaning up these items, give them 
 
 Through the GraphQL API, a query can no longer be created unless it is attached to at least one dataset. The UI always attaches a query to a dataset, so it is not affected.
 
-### Saves during a zero-downtime rollback with unknown-data tolerance on
+### Saves during a zero-downtime rollback with unknown-data tolerance on ([#21569](https://github.com/datahub-project/datahub/pull/21569))
 
 This only applies with unknown-data tolerance on (`UNKNOWN_DATA_TOLERANCE_ENABLED`, off by default;
 see [#20280](https://github.com/datahub-project/datahub/pull/20280)). With it off nothing changes.
