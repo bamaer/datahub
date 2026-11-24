@@ -29,7 +29,7 @@ If someone sees an "Unauthorized" error when cleaning up these items, give them 
 
 Through the GraphQL API, a query can no longer be created unless it is attached to at least one dataset. The UI always attaches a query to a dataset, so it is not affected.
 
-### Graph edges during a zero-downtime rollback
+### Graph edges during a zero-downtime rollback ([#21577](https://github.com/datahub-project/datahub/pull/21577))
 
 This only applies with entity and aspect tolerance on (`UNKNOWN_DATA_TOLERANCE_ENABLED` or
 `UNKNOWN_ENTITY_ASPECT_TOLERANCE_ENABLED`, off by default; see
